@@ -3,13 +3,6 @@ import { ArrowRight, CheckCircle2, CircleDot, Quote } from 'lucide-react';
 import { services, process, faqs } from '@/data/site';
 import { Assessment } from '@/components/assessment';
 
-const painPoints = [
-  'I know what I should do. I just do not follow through.',
-  'I have goals, but everything feels scattered.',
-  'I am entering a new season and do not know what comes next.',
-  'I need accountability without judgment.',
-];
-
 const outcomes = ['Clearer decisions', 'More consistent habits', 'Stronger follow-through', 'Better priorities', 'Greater self-awareness', 'Practical accountability'];
 
 export default function HomePage() {
@@ -20,7 +13,7 @@ export default function HomePage() {
           width: calc(100% - 32px);
           max-width: 1600px;
           min-height: 640px;
-          margin: 26px auto 42px;
+          margin: 26px auto 28px;
           padding: 0;
           display: block;
           position: relative;
@@ -47,25 +40,25 @@ export default function HomePage() {
           z-index: 2;
           left: clamp(28px, 6vw, 92px);
           bottom: clamp(34px, 7vw, 82px);
-          width: min(560px, calc(100% - 56px));
+          width: min(540px, calc(100% - 56px));
           color: #fff;
         }
 
         .hero-image .eyebrow {
           color: rgba(255,255,255,.72);
-          font-size: .66rem;
+          font-size: .64rem;
           letter-spacing: .19em;
           margin-bottom: 13px;
         }
 
         .hero-image h1 {
-          max-width: 560px;
+          max-width: 540px;
           margin: 0;
           color: #fff;
           font-family: var(--font-display);
-          font-size: clamp(2.45rem, 4vw, 4.15rem);
-          line-height: 1.01;
-          letter-spacing: -.035em;
+          font-size: clamp(2.35rem, 3.75vw, 3.85rem);
+          line-height: 1.02;
+          letter-spacing: -.032em;
           font-weight: 560;
           text-wrap: balance;
         }
@@ -77,11 +70,11 @@ export default function HomePage() {
         }
 
         .hero-image .hero-lede {
-          max-width: 500px;
-          margin: 18px 0 23px;
+          max-width: 465px;
+          margin: 16px 0 22px;
           color: rgba(255,255,255,.83);
-          font-size: .98rem;
-          line-height: 1.62;
+          font-size: .93rem;
+          line-height: 1.58;
         }
 
         .hero-image .button-dark {
@@ -98,10 +91,37 @@ export default function HomePage() {
         }
 
         .hero-image-note {
-          margin-top: 16px;
-          color: rgba(255,255,255,.68);
-          font-size: .72rem;
-          letter-spacing: .01em;
+          margin-top: 15px;
+          color: rgba(255,255,255,.67);
+          font-size: .7rem;
+        }
+
+        .funnel-home-wrap {
+          padding-top: 38px;
+          padding-bottom: 70px;
+        }
+
+        .post-funnel-intro {
+          text-align: center;
+          max-width: 690px;
+          margin: 0 auto 32px;
+        }
+
+        .post-funnel-intro h2 {
+          font-family: var(--font-display);
+          font-size: clamp(2rem, 3.6vw, 3.15rem);
+          line-height: 1.03;
+          letter-spacing: -.03em;
+          margin: 0;
+          font-weight: 560;
+        }
+
+        .post-funnel-intro p:last-child {
+          color: #69706b;
+          line-height: 1.65;
+          font-size: .9rem;
+          max-width: 580px;
+          margin: 14px auto 0;
         }
 
         @media (max-width: 760px) {
@@ -126,48 +146,41 @@ export default function HomePage() {
             width: auto;
           }
           .hero-image h1 {
-            font-size: clamp(2.25rem, 11vw, 3.25rem);
-            max-width: 440px;
-          }
-          .hero-image .hero-lede {
-            font-size: .92rem;
+            font-size: clamp(2.15rem, 10vw, 3rem);
             max-width: 420px;
           }
+          .hero-image .hero-lede {
+            font-size: .88rem;
+            max-width: 400px;
+          }
+          .funnel-home-wrap { padding-top: 24px; }
         }
       `}</style>
 
       <section className="hero hero-image" aria-label="Life coaching introduction">
         <div className="hero-image-content">
           <p className="eyebrow">ONE-ON-ONE LIFE COACHING</p>
-          <h1>Get clear. <em>Move forward.</em></h1>
-          <p className="hero-lede">Practical coaching for decisions, habits, and the season of life you are in right now.</p>
+          <h1>Something feels off. <em>Let&apos;s narrow down what.</em></h1>
+          <p className="hero-lede">Answer a few questions about where you feel stuck. We&apos;ll show you what kind of support may actually help.</p>
           <div className="button-row">
-            <Link className="button button-dark" href="/book">Book a free consultation <ArrowRight size={16} /></Link>
-            <Link className="button button-ghost" href="/services">Explore coaching</Link>
+            <Link className="button button-dark" href="#find-your-fit">Find my starting point <ArrowRight size={16} /></Link>
+            <Link className="button button-ghost" href="/services">See coaching options</Link>
           </div>
-          <p className="hero-image-note">A clear conversation. No pressure and no inflated promises.</p>
+          <p className="hero-image-note">About 60 seconds. No email required.</p>
         </div>
       </section>
 
-      <section className="section-shell section-pad">
-        <div className="split-heading">
-          <div><p className="eyebrow">DOES THIS SOUND FAMILIAR?</p><h2>Maybe you are not lost. Maybe you are <em>stuck.</em></h2></div>
-          <p>You can be ambitious, capable, and still need help separating what matters from what is simply loud.</p>
-        </div>
-        <div className="pain-grid">
-          {painPoints.map((point, index) => (
-            <article className="pain-card glass" key={point}><span>0{index + 1}</span><p>{point}</p></article>
-          ))}
-        </div>
+      <section className="section-shell funnel-home-wrap">
+        <Assessment />
       </section>
 
       <section className="section-shell section-pad">
+        <div className="post-funnel-intro">
+          <p className="eyebrow">WHAT COACHING CAN HELP WITH</p>
+          <h2>Once the real friction is clearer, the work can get specific.</h2>
+          <p>Different problems need different kinds of support. Explore the paths below, or use your result above as the place to begin.</p>
+        </div>
         <div className="glass glass-mega services-slab">
-          <div className="services-intro">
-            <p className="eyebrow">COACHING, WITHOUT THE VAGUE LANGUAGE</p>
-            <h2>Start with the problem you actually have.</h2>
-            <p>Not every client needs the same program. These are the core ways coaching can support the season you are in now.</p>
-          </div>
           <div className="service-grid">
             {services.map(({ icon: Icon, title, slug, eyebrow, copy }, index) => (
               <Link href={`/services#${slug}`} className="service-card" key={slug}>
@@ -214,10 +227,6 @@ export default function HomePage() {
       </section>
 
       <section className="section-shell section-pad">
-        <Assessment />
-      </section>
-
-      <section className="section-shell section-pad">
         <div className="resource-banner glass glass-mega">
           <div>
             <p className="eyebrow">FREE RESOURCE</p>
@@ -248,7 +257,7 @@ export default function HomePage() {
           <p>Bring the situation you are facing. We will start there.</p>
           <div className="button-row centered">
             <Link className="button button-dark" href="/book">Book a free consultation <ArrowRight size={17} /></Link>
-            <Link className="button button-ghost" href="/services">Compare coaching options</Link>
+            <Link className="button button-ghost" href="#find-your-fit">Retake the fit questions</Link>
           </div>
         </div>
       </section>
