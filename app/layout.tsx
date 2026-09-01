@@ -8,8 +8,8 @@ const display = Cormorant_Garamond({ subsets: ["latin"], variable: "--font-displ
 const body = Inter({ subsets: ["latin"], variable: "--font-body" });
 
 export const metadata: Metadata = {
-  title: { default: "Forward Coaching", template: "%s | Forward Coaching" },
-  description: "Practical life coaching for clarity, accountability, habits, career transitions, and personal growth.",
+  title: { default: "GrowthGains", template: "%s | GrowthGains" },
+  description: "Faith-centered life coaching for clarity, accountability, habits, transitions, and personal growth.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -18,18 +18,19 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className={`${display.variable} ${body.variable}`}>
         <style>{`
           body{background:#f3f1ec;color:#121922}
-          .ambient{opacity:.24;filter:blur(110px)}
-          .ambient-one{background:#b8c3ce!important}
-          .ambient-two{background:#c8ced3!important}
+          .ambient{opacity:.18;filter:blur(110px)}
+          .ambient-one{background:#c7cdd3!important}
+          .ambient-two{background:#d7dbdf!important}
           .glass,.glass-strong{background:#f6f6f4;border-color:#d9dde1;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
           .glass-mega:before{display:none}
           .site-header{background:#f7f7f5!important;border:1px solid #d9dde1!important;box-shadow:none!important;border-radius:20px!important}
-          .brand-mark{background:#111820;color:#fff}
+          .brand-mark{background:#102236;color:#fff;font-size:0!important;position:relative}
+          .brand-mark:before{content:'GG';font-family:var(--font-display);font-size:.86rem;letter-spacing:-.08em}
           .brand small,.desktop-nav{color:#65707b}
           .desktop-nav a:hover{color:#0e1721}
           .button{box-shadow:none!important}
-          .button-dark{background:#111820;color:#fff}
-          .button-dark:hover{background:#1b2a3a}
+          .button-dark{background:#102236;color:#fff}
+          .button-dark:hover{background:#1b3147}
           .button-ghost{background:#eef1f3;border-color:#d2d8de;color:#182431}
           .eyebrow,.mini-label{color:#405b76}
           .split-heading h2,.services-intro h2,.two-col h2,.resource-banner h2,.final-cta h2,.site-footer h2{color:#111820}
@@ -57,9 +58,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <div className="ambient ambient-one" />
         <div className="ambient ambient-two" />
         <header className="site-header glass glass-strong">
-          <Link className="brand" href="/" aria-label="Forward Coaching home">
-            <span className="brand-mark">F</span>
-            <span>FORWARD <small>COACHING</small></span>
+          <Link className="brand" href="/" aria-label="GrowthGains home">
+            <span className="brand-mark">GG</span>
+            <span>GrowthGains <small>LIFE COACHING</small></span>
           </Link>
           <nav className="desktop-nav" aria-label="Primary navigation">
             {nav.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
@@ -69,7 +70,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         {children}
         <footer className="site-footer glass glass-strong">
           <div>
-            <p className="eyebrow">FORWARD COACHING</p>
+            <p className="eyebrow">GROWTHGAINS</p>
             <h2>Bring the situation you&apos;re facing. We&apos;ll start there.</h2>
           </div>
           <div className="footer-links">
