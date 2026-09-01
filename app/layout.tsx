@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import Link from "next/link";
-import { nav } from "@/data/site";
+import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 const display = Cormorant_Garamond({ subsets: ["latin"], variable: "--font-display", weight: ["500", "600", "700"] });
@@ -24,6 +24,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           .glass,.glass-strong{background:#f6f6f4;border-color:#d9dde1;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
           .glass-mega:before{display:none}
           .site-header{background:#f7f7f5!important;border:1px solid #d9dde1!important;box-shadow:none!important;border-radius:20px!important}
+          .smart-header{transition:transform .3s ease,opacity .3s ease;will-change:transform,opacity}
+          .smart-header-hidden{transform:translateY(-140%);opacity:0;pointer-events:none}
           .brand-mark{background:#102236;color:#fff;font-size:0!important;position:relative}
           .brand-mark:before{content:'GG';font-family:var(--font-display);font-size:.86rem;letter-spacing:-.08em}
           .brand small,.desktop-nav{color:#65707b}
@@ -53,20 +55,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           .site-footer h2{color:#fff!important;font-size:2.25rem!important}
           .site-footer .eyebrow{color:#8ea5bb}
           .footer-links,.fine-print{color:#aeb8c1}
+          @media(prefers-reduced-motion:reduce){.smart-header{transition:none}}
           @media(max-width:620px){.page-hero h1{font-size:2.9rem!important}.split-heading h2,.services-intro h2,.two-col h2{font-size:2.45rem!important}.site-footer h2{font-size:2rem!important}}
         `}</style>
         <div className="ambient ambient-one" />
         <div className="ambient ambient-two" />
-        <header className="site-header glass glass-strong">
-          <Link className="brand" href="/" aria-label="GrowthGains home">
-            <span className="brand-mark">GG</span>
-            <span>GrowthGains <small>LIFE COACHING</small></span>
-          </Link>
-          <nav className="desktop-nav" aria-label="Primary navigation">
-            {nav.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
-          </nav>
-          <Link className="button button-dark button-small" href="/book">Book a call</Link>
-        </header>
+        <SiteHeader />
         {children}
         <footer className="site-footer glass glass-strong">
           <div>
