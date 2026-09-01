@@ -1,0 +1,3 @@
+import { faqs } from '@/data/site';
+export const metadata={title:'FAQ',description:'Answers to common questions about life coaching, sessions, fit, and how coaching differs from therapy.'};
+export default function FaqPage(){return <main><section className="section-shell page-hero"><p className="eyebrow">FREQUENTLY ASKED QUESTIONS</p><h1>Know what coaching is—and what it is not.</h1><p>Clear answers before you commit. Coaching should feel transparent, not mysterious.</p></section><section className="section-shell section-pad stack">{faqs.map(({q,a})=><article className="content-card glass" key={q}><h2>{q}</h2><p>{a}</p></article>)}</section></main>}
