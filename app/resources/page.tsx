@@ -1,0 +1,5 @@
+import { ArrowDownToLine } from 'lucide-react';
+
+const resources=['The Personal Reset Workbook','Weekly Planning Template','Life Audit','Habit Tracker','Values Exercise','Decision-Making Worksheet','Monthly Reset','Weekly Review'];
+export const metadata={title:'Resources',description:'Free practical coaching worksheets for clarity, habits, decisions, and weekly planning.'};
+export default function ResourcesPage(){return <main><section className="section-shell page-hero"><p className="eyebrow">FREE RESOURCES</p><h1>Useful before you ever book a session.</h1><p>Practical tools for thinking clearly, reviewing your week, deciding what matters, and turning intentions into a next step.</p></section><section className="section-shell section-pad content-grid">{resources.map((item,i)=><article className="content-card glass" key={item}><p className="mini-label">RESOURCE 0{i+1}</p><h2>{item}</h2><p>Download-ready resource placeholder. Add the finished PDF later without changing the page architecture.</p><span className="text-link"><ArrowDownToLine size={15}/> Coming soon</span></article>)}</section></main>}
