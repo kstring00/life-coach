@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, CheckCircle2, CircleDot, Quote, ShieldCheck } from 'lucide-react';
+import { ArrowRight, CheckCircle2, CircleDot, Quote } from 'lucide-react';
 import { services, process, faqs } from '@/data/site';
 import { Assessment } from '@/components/assessment';
 
@@ -15,28 +15,137 @@ const outcomes = ['Clearer decisions', 'More consistent habits', 'Stronger follo
 export default function HomePage() {
   return (
     <main>
-      <section className="hero section-shell">
-        <div className="hero-copy">
-          <p className="eyebrow">PRACTICAL COACHING FOR REAL LIFE</p>
-          <h1>You do not need more hype. You need <em>clarity, structure, and movement.</em></h1>
-          <p className="hero-lede">One-on-one coaching for people who are ready to make better decisions, build stronger habits, and stop restarting the same goals.</p>
+      <style>{`
+        .hero.hero-image {
+          width: calc(100% - 32px);
+          max-width: 1600px;
+          min-height: 640px;
+          margin: 26px auto 42px;
+          padding: 0;
+          display: block;
+          position: relative;
+          overflow: hidden;
+          border-radius: 34px;
+          background-image:
+            linear-gradient(90deg, rgba(18, 23, 20, .76) 0%, rgba(18, 23, 20, .53) 38%, rgba(18, 23, 20, .16) 70%, rgba(18, 23, 20, .06) 100%),
+            url('https://images.unsplash.com/photo-1758273240403-052b3c99f636?auto=format&fit=crop&q=88&w=2400');
+          background-size: cover;
+          background-position: center 42%;
+          box-shadow: 0 26px 80px rgba(35, 34, 30, .16);
+        }
+
+        .hero-image::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          background: linear-gradient(180deg, rgba(255,255,255,.05), transparent 32%, rgba(9,13,11,.14));
+        }
+
+        .hero-image-content {
+          position: absolute;
+          z-index: 2;
+          left: clamp(28px, 6vw, 92px);
+          bottom: clamp(34px, 7vw, 82px);
+          width: min(560px, calc(100% - 56px));
+          color: #fff;
+        }
+
+        .hero-image .eyebrow {
+          color: rgba(255,255,255,.72);
+          font-size: .66rem;
+          letter-spacing: .19em;
+          margin-bottom: 13px;
+        }
+
+        .hero-image h1 {
+          max-width: 560px;
+          margin: 0;
+          color: #fff;
+          font-family: var(--font-display);
+          font-size: clamp(2.45rem, 4vw, 4.15rem);
+          line-height: 1.01;
+          letter-spacing: -.035em;
+          font-weight: 560;
+          text-wrap: balance;
+        }
+
+        .hero-image h1 em {
+          color: #fff;
+          font-style: italic;
+          font-weight: 500;
+        }
+
+        .hero-image .hero-lede {
+          max-width: 500px;
+          margin: 18px 0 23px;
+          color: rgba(255,255,255,.83);
+          font-size: .98rem;
+          line-height: 1.62;
+        }
+
+        .hero-image .button-dark {
+          background: rgba(255,255,255,.94);
+          color: #1f2622;
+          box-shadow: 0 10px 30px rgba(0,0,0,.16);
+        }
+
+        .hero-image .button-ghost {
+          color: #fff;
+          background: rgba(255,255,255,.10);
+          border-color: rgba(255,255,255,.35);
+          backdrop-filter: blur(14px);
+        }
+
+        .hero-image-note {
+          margin-top: 16px;
+          color: rgba(255,255,255,.68);
+          font-size: .72rem;
+          letter-spacing: .01em;
+        }
+
+        @media (max-width: 760px) {
+          .hero.hero-image {
+            width: calc(100% - 20px);
+            min-height: 560px;
+            margin-top: 12px;
+            border-radius: 25px;
+            background-position: 62% center;
+          }
+          .hero-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(16,21,18,.18) 0%, rgba(16,21,18,.2) 32%, rgba(16,21,18,.83) 100%);
+            z-index: 1;
+          }
+          .hero-image-content {
+            left: 24px;
+            right: 24px;
+            bottom: 30px;
+            width: auto;
+          }
+          .hero-image h1 {
+            font-size: clamp(2.25rem, 11vw, 3.25rem);
+            max-width: 440px;
+          }
+          .hero-image .hero-lede {
+            font-size: .92rem;
+            max-width: 420px;
+          }
+        }
+      `}</style>
+
+      <section className="hero hero-image" aria-label="Life coaching introduction">
+        <div className="hero-image-content">
+          <p className="eyebrow">ONE-ON-ONE LIFE COACHING</p>
+          <h1>Get clear. <em>Move forward.</em></h1>
+          <p className="hero-lede">Practical coaching for decisions, habits, and the season of life you are in right now.</p>
           <div className="button-row">
-            <Link className="button button-dark" href="/book">Book a free consultation <ArrowRight size={17} /></Link>
+            <Link className="button button-dark" href="/book">Book a free consultation <ArrowRight size={16} /></Link>
             <Link className="button button-ghost" href="/services">Explore coaching</Link>
           </div>
-          <div className="trust-line"><ShieldCheck size={18} /><span>No pressure. No inflated promises. Just a clear conversation about what would actually help.</span></div>
-        </div>
-
-        <div className="hero-console glass glass-strong">
-          <div className="console-topline"><span>FORWARD / 01</span><span className="status-dot">Available for new clients</span></div>
-          <div className="portrait-placeholder" aria-label="Coach portrait placeholder">
-            <div className="portrait-copy"><span>COACH PORTRAIT</span><strong>Replace with a natural, editorial headshot.</strong></div>
-          </div>
-          <div className="console-grid">
-            <div><span>FOCUS</span><strong>Clarity → action</strong></div>
-            <div><span>FORMAT</span><strong>Virtual 1:1</strong></div>
-            <div><span>STYLE</span><strong>Direct + grounded</strong></div>
-          </div>
+          <p className="hero-image-note">A clear conversation. No pressure and no inflated promises.</p>
         </div>
       </section>
 
